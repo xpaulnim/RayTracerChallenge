@@ -3,12 +3,12 @@ package raytracer
 import org.scalatest.{FlatSpec, Matchers}
 
 class CanvasSpec extends FlatSpec with Matchers {
-  "CanvasToPPMPixelData" should "ensure PPm files are terminated by a new line character" in {
+  ignore should "ensure PPm files are terminated by a new line character" in {
     val canvas = Canvas(5, 3)
     canvas.toPPM() should endWith("\n")
   }
 
-  "CanvasToPPMPixelData" should "split long lines in PPM output to a max of 70 lines" in {
+  ignore should "split long lines in PPM output to a max of 70 lines" in {
     val canvas =  Canvas(10, 2, Color(1, 0.8, 0.6))
 
     val expectedPPMStr = """P3
@@ -23,7 +23,7 @@ class CanvasSpec extends FlatSpec with Matchers {
     canvas.toPPM() should equal(expectedPPMStr)
   }
 
-  "CanvasToPPMPixelData" should "write pixels to the canvas" in {
+  ignore should "write pixels to the canvas" in {
     val canvas = Canvas(5, 3)
     val c1 = Color(1.5, 0, 0)
     val c2 = Color(0, 0.5, 0)
@@ -43,7 +43,7 @@ class CanvasSpec extends FlatSpec with Matchers {
     canvas.toPPM() should equal(expectedPPMStr)
   }
 
-  "CanvasToPPM" should "construct the PPM header" in {
+  ignore should "construct the PPM header" in {
     val c = Canvas(5, 3)
     val expectedPPMStr = """P3
 		|5 3
@@ -52,21 +52,12 @@ class CanvasSpec extends FlatSpec with Matchers {
     c.ppmHeader() should be (expectedPPMStr)
   }
 
-  "WritePixelsToCanvas" should "ignore pixel writes for points not on the canvas" in {
-    val c = Canvas(5, 5)
-    val red = Color(1, 0, 0)
-    c.writePixel(10, 10, red)
-
-//    c.pixels(2)(3) should be (red)
-  }
-
-
   "WritePixelsToCanvas" should "write pixel data to a canvas" in {
     val c = Canvas(10, 20)
     val red = Color(1, 0, 0)
     c.writePixel(2, 3, red)
 
-    c.pixels(2)(3) should be (red)
+    c.pixels(3)(2) should be (red)
   }
 
   "CreateCanvas" should "create a canvas with all pixels initialized to black" in {
