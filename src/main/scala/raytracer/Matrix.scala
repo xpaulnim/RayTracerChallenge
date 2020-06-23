@@ -3,6 +3,7 @@ package raytracer
 import raytracer.DoubleEnhancements._
 
 case class Matrix(rows: Int, cols: Int) {
+  // TODO: Make this immutable
   private val _matrix = Array.ofDim[Double](rows, cols)
 
   def apply(row: Int)(col: Int): Double = {
@@ -23,6 +24,10 @@ case class Matrix(rows: Int, cols: Int) {
     (this._matrix zip other._matrix).forall(a => {
       a._1.length == a._2.length && (a._1 zip a._2).forall(b => b._1 ~= b._2)
     })
+  }
+
+  override def toString: String = {
+    this._matrix.map(_.mkString(", ")).mkString("\n")
   }
 
   def *(other: Matrix): Matrix = {
@@ -109,7 +114,7 @@ case class Matrix(rows: Int, cols: Int) {
 
     val matrix = Matrix(rows, cols)
 
-    for(row <- 0 until rows) {
+    for (row <- 0 until rows) {
       for (col <- 0 until cols) {
         matrix(col, row) = this.cofactor(row, col) / this.determinant()
       }
@@ -120,7 +125,13 @@ case class Matrix(rows: Int, cols: Int) {
 }
 
 object Matrix {
-  val IDENTITY_MATRIX: Matrix = {
+  def apply(rows: Int, cols: Int): Matrix = new Matrix(rows, cols)
+
+
+}
+
+object IdentityMatrix {
+  def apply(): Matrix = {
     val matrix = Matrix(4, 4)
 
     matrix(0) = Array(1, 0, 0, 0)

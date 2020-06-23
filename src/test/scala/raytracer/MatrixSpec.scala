@@ -3,6 +3,8 @@ package raytracer
 import org.scalatest._
 import raytracer.DoubleEnhancements._
 
+import scala.math.Pi
+
 class MatrixSpec extends FlatSpec with Matchers {
   "Matrix" should "construct and inspect a 4x4 matrix" in {
     val matrix = Matrix(4, 4)
@@ -111,9 +113,7 @@ class MatrixSpec extends FlatSpec with Matchers {
     matrix(2) = Array(2, 4, 8, 16)
     matrix(3) = Array(4, 8, 16, 32)
 
-    import Matrix._
-
-    ((matrix * IDENTITY_MATRIX) == matrix) should be(true)
+    ((matrix * IdentityMatrix()) == matrix) should be(true)
   }
 
   it should "transpose a matrix" in {
@@ -133,9 +133,8 @@ class MatrixSpec extends FlatSpec with Matchers {
   }
 
   it should "transposing the identity matrix" in {
-    import Matrix.IDENTITY_MATRIX
 
-    (IDENTITY_MATRIX.transpose() == IDENTITY_MATRIX) should be(true)
+    (IdentityMatrix().transpose() == IdentityMatrix()) should be(true)
   }
 
   it should "calculate the determinant of a 2x2 matrix" in {
