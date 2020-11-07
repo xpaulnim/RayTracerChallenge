@@ -41,8 +41,8 @@ object Utils {
     num
   }
 
-  def writeStrToFile(str: String, basePath: String = System.getProperty("user.dir")): Unit = {
-    val path = FileSystems.getDefault.getPath(basePath, "render.ppm")
+  def writeStrToFile(filename: String, str: String, basePath: String = System.getProperty("user.dir")): Unit = {
+    val path = FileSystems.getDefault.getPath(basePath, filename)
 
     Files.deleteIfExists(path)
     Files.write(path, str.getBytes(), StandardOpenOption.CREATE_NEW)

@@ -12,7 +12,7 @@ class IntersectionSpec extends FlatSpec with Matchers{
     val i1 = Intersection(1, sphere)
     val i2 = Intersection(2, sphere)
 
-    val intersections = hit(Set(i2, i1))
+    val intersections = hit(Seq(i2, i1))
 
     intersections should equal(Some(i1))
   }
@@ -22,7 +22,7 @@ class IntersectionSpec extends FlatSpec with Matchers{
     val i1 = Intersection(-1, sphere)
     val i2 = Intersection(1, sphere)
 
-    val intersection = hit(Set(i2, i1))
+    val intersection = hit(Seq(i2, i1))
 
     intersection should equal(Some(i2))
   }
@@ -32,7 +32,7 @@ class IntersectionSpec extends FlatSpec with Matchers{
     val i1 = Intersection(-2, sphere)
     val i2 = Intersection(-1, sphere)
 
-    val intersection = hit(Set(i2, i1))
+    val intersection = hit(Seq(i2, i1))
 
     intersection should equal(None)
   }
@@ -44,7 +44,7 @@ class IntersectionSpec extends FlatSpec with Matchers{
     val i3 = Intersection(-3, sphere)
     val i4 = Intersection(2, sphere)
 
-    val intersection = hit(Set(i1, i2, i3, i4))
+    val intersection = hit(Seq(i1, i2, i3, i4))
 
     intersection should equal(Some(i4))
   }

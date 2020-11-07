@@ -12,7 +12,7 @@ object RayTracerChallenge extends App {
 
   val canvas = clock()
 
-  Utils.writeStrToFile(canvas.toPPM())
+  Utils.writeStrToFile("render.ppm", canvas.toPPM())
 
   def clock(): Canvas = {
     val dim = 100

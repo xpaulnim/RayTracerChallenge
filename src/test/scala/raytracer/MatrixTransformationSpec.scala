@@ -13,7 +13,7 @@ class MatrixTransformationSpec extends FlatSpec with Matchers {
     val transform = translation(5, -3, 2)
     val point = Point(-3, 4, 5)
 
-    assert((transform * point) == (Point(2, 1, 7)))
+    assert((transform * point) == Point(2, 1, 7))
   }
 
   it should "multiply by the inverse of a translation matrix" in {
@@ -102,7 +102,7 @@ class MatrixTransformationSpec extends FlatSpec with Matchers {
     assert((fullQuarter * p) == Point(-1, 0, 0))
   }
 
-  it should "perform shearing transformation to move x in proportiion to y" in {
+  it should "perform shearing transformation to move x in proportion to y" in {
     val transform = shearing(1, 0, 0, 0, 0, 0)
     val p = Point(2, 3, 4)
 

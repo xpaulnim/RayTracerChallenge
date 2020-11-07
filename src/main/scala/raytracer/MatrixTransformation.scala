@@ -1,6 +1,6 @@
 package raytracer
 
-// TODO: API could be fluent
+// TODO: API could be fluent. See Chaining Transformation (Fluent APIs)
 object MatrixTransformation {
 
   def translation(x: Double, y: Double, z: Double): Matrix = {
@@ -12,7 +12,6 @@ object MatrixTransformation {
 
     matrix
   }
-
 
   def scaling (x: Double, y: Double, z: Double): Matrix = {
     val matrix = IdentityMatrix()

@@ -11,4 +11,5 @@ case class Ray(origin: Tuple, /* Point */
     origin + direction * t
   }
 
+  def transform(matrix: Matrix): Ray = Ray(matrix * origin, matrix * direction)
 }

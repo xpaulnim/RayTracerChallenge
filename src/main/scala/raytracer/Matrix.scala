@@ -126,8 +126,6 @@ case class Matrix(rows: Int, cols: Int) {
 
 object Matrix {
   def apply(rows: Int, cols: Int): Matrix = new Matrix(rows, cols)
-
-
 }
 
 object IdentityMatrix {
